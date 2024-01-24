@@ -4,20 +4,6 @@
 
 using namespace std;
 
-// FRUFRU
-// ANCHOR frufru
-#define RED (string) "\x1b[31m"
-#define GREEN (string) "\x1b[32m"
-#define YELLOW (string) "\x1b[33m"
-#define BLUE (string) "\x1b[34m"
-#define MAGENTA (string) "\x1b[35m"
-#define CYAN (string) "\x1b[36m"
-#define RESET (string) "\x1b[0m"
-
-void printColorLn(string color, string msg)
-{
-  cout << color << msg << RESET << endl;
-}
 
 void clear()
 {
@@ -81,7 +67,7 @@ public:
     string placa;
     bool invalid = false;
 
-    string errorMsg = RED + "Placa inválida, " + RESET + "tente novamente: ";
+    string errorMsg = "Placa inválida, tente novamente: ";
 
     do
     {
@@ -146,8 +132,7 @@ int menu()
   int aux;
   do
   {
-    printColorLn(MAGENTA, "Ola, aqui em baixo esta nosso menu, escolha a opcao");  //opcao com frufru (nn roda no CB)
-    // cout << "Ola, aqui em baixo esta nosso menu, escolha a opcao" << endl;
+    cout << "Ola, aqui em baixo esta nosso menu, escolha a opcao" << endl;
     cout << "[1] - para listar todos os veiculos" << endl;
     cout << "[2] - para pesquisar os veiculos" << endl;     // feito
     cout << "[3] - para cadastrar um novo veiculo" << endl; // feito
@@ -197,7 +182,6 @@ public:
     if (Veiculo::contador == 500)
     {
       cout << "atingiu o maximo de veiculos cadastrados" << endl;
-      // printColorLn(RED, "atingiu o maximo de veiculos cadastrados"); opcao com frufru (nn roda no CB)
       return;
     }
 
@@ -220,7 +204,6 @@ public:
     Veiculo::contador++;
     clear();
     cout << "O carro foi cadastrado!" << endl;
-    // printColorLn(GREEN, "O carro foi cadastrado!"); //opacao com frufru, nn funciona no CB
     cout << endl;
   }
 
@@ -229,8 +212,6 @@ public:
   {
     clear();
     cout << "aqui estao todos os carros cadastrados" << endl;
-    // printColorLn(YELLOW, "aqui estao todos os carros cadastrados"); // opcao com frufru, nao funciona no CB
-    // fazer um if para lista vazia
     if (Veiculo::contador == 0)
     {
       cout << "A lista esta vazia" << endl;
@@ -325,7 +306,6 @@ public:
     // pesquisa atravez da placa do carro
 
     cout << "digite sua placa" << endl;
-    // printColorLn(YELLOW, "digite sua placa"); //nao funciona no CB FRUFRU
 
     string placa = readString();
 
@@ -337,7 +317,7 @@ public:
       }
     }
 
-    throw string(RED + "carro nao encontrado" + RESET);
+    throw string("carro nao encontrado");
   }
 
   // ANCHOR excluir
@@ -348,7 +328,6 @@ public:
     if (Veiculo::contador == 0)
     {
       cout << "erro lista vazia" << endl;
-      // printColorLn(RED, "erro lista vazia");
       return;
     }
 
@@ -369,7 +348,6 @@ public:
     Veiculo::contador--;
 
     cout << "carro excluido com sucesso!" << endl;
-    // printColorLn(GREEN, "carro excluido com sucesso!");
   }
 
   // ANCHOR editar
@@ -378,7 +356,6 @@ public:
     // buscando a posicao do carro a ser editado
     clear();
     cout << "comece a editar o seu veiculo." << endl;
-    // printColorLn(YELLOW, "comece a editar o seu veiculo.");
     cout << "qual e o ano do veiculo" << endl; // ano
     veiculo.setAno();
     cout << "qual e o preco do veiculo" << endl; // preco
@@ -393,7 +370,6 @@ public:
     veiculo.setObs(readString());
     clear();
     cout << "O carro foi editado" << endl;
-    // printColorLn(GREEN, "O carro foi editado");
     cout << endl;
   }
 };
